@@ -180,7 +180,7 @@
 - name: set the scenario args for composable roles
   set_fact:
     scenario_args: >-
-      {% if release not in ['mitaka', 'newton'] and overcloud_release|default('') not in ['newton', 'mitaka'] %}
+      {% if release not in ['liberty', 'mitaka', 'newton'] and overcloud_release|default('') not in ['liberty', 'newton', 'mitaka'] %}
       -e {{ overcloud_templates_path }}/environments/deployed-server-bootstrap-environment-centos.yaml
       {% endif %}
       -e {{ overcloud_templates_path }}/ci/environments/{{ composable_scenario }}

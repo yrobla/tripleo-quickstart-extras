@@ -28,7 +28,7 @@ cat <<EOF | sudo tee -a $HOSTFILE
 ## BEGIN OVERCLOUD HOSTS  #nodocs
 $(openstack stack output show overcloud HostsEntry -f value -c output_value)
 
-{% if enable_pacemaker|bool and release == 'mitaka' %}
+{% if enable_pacemaker|bool and release in ['liberty', 'mitaka'] %}
 $(openstack stack output show overcloud PublicVip \
             -f value -c output_value) overcloud-public-vip
 {% endif %}

@@ -44,7 +44,7 @@ local_ip = {{undercloud_local_ip|default(
 network_gateway = {{undercloud_network_gateway|default(
     undercloud_network_cidr|nthhost(1))}}
 
-{% if release in ['mitaka', 'newton'] %}
+{% if release in ['liberty', 'mitaka', 'newton'] %}
 # Virtual IP address to use for the public endpoints of Undercloud
 # services.  Only used if undercloud_service_certficate is set.
 # (string value)
