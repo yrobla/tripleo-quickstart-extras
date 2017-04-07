@@ -59,7 +59,7 @@ sudo systemctl restart openstack-ironic-conductor && sleep 30
 ## * Register nodes with Ironic.
 ## ::
 
-{% if release in ['mitaka'] %}
+{% if release in ['liberty', 'mitaka'] %}
 openstack baremetal import --json instackenv.json
 openstack baremetal configure boot
 {% elif step_introspect|bool %}
@@ -135,7 +135,7 @@ sudo mistral-db-manage populate
 ## * Introspect hardware attributes of nodes.
 ## ::
 
-    {% if release in ['mitaka'] %}
+    {% if release in ['liberty', 'mitaka'] %}
 
         openstack baremetal introspection bulk start
 
