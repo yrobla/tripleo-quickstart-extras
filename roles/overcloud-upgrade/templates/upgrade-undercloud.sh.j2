@@ -3,7 +3,7 @@
 set -eux
 # Undercloud upgrade script.
 # Those steps is for the major mariadb upgrade in mitaka
-{% if target_upgrade_version == 'mitaka' and major_upgrade|bool %}
+{% if target_upgrade_version in ['liberty', 'mitaka'] and major_upgrade|bool %}
 sudo systemctl stop openstack-*
 sudo systemctl stop neutron-*
 sudo yum -y update instack-undercloud openstack-puppet-modules openstack-tripleo-common python-tripleoclient

@@ -14,7 +14,7 @@
     - upgrade-undercloud
 
 - include: pre-overcloud.yml
-  when: step_pre_overcloud_upgrade and target_upgrade_version in ['mitaka', 'newton']
+  when: step_pre_overcloud_upgrade and target_upgrade_version in ['liberty', 'mitaka', 'newton']
   tags:
     - pre-upgrade-overcloud
 
