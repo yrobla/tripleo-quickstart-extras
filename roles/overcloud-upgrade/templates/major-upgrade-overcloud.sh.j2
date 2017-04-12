@@ -34,7 +34,8 @@ source {{ upgrade_working_dir }}/stackrc
 {% if target_upgrade_version in ['liberty', 'mitaka'] %}
 if heat stack-show overcloud | grep "stack_status " | egrep "(CREATE|UPDATE)_COMPLETE"; then
     echo "execute aodh upgrade"
-    openstack overcloud deploy --templates {{ tht_dir }} \
+    openstack overcloud deploy {% if target_upgrade_version in ['liberty'] %}
+    --force-postconfig  {% endif %} --templates {{ tht_dir }} \
         -e tripleo-heat-templates/overcloud-resource-registry-puppet.yaml \
     {% if network_isolation == true %}
         -e {{ tht_dir }}/environments/network-isolation.yaml \
