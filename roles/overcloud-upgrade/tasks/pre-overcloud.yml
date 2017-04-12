@@ -15,6 +15,12 @@
   when: not mixed_upgrade|bool
   file: path={{ upgrade_working_dir }}/{{ tht_dir }} state=absent
 
+- name: Ensure directory where to copy images exist
+  file:
+      path: "{{ upgrade_working_dir}}/{{ tht_dir }}"
+      state: directory
+      mode: 0755
+
 - name: Copy new Tht directory to the upgrade working dir
   when: not mixed_upgrade|bool
   shell: >
